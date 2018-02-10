@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import { addRecipe } from '../actions';
 
 class App extends Component {
   state = {
@@ -14,7 +15,13 @@ class App extends Component {
     })
   }
   submitFood = () => {
-    store.dispatch()
+    this.props.store.dispatch(addRecipe({
+      day: 'monday',
+      meal: 'breakfast',
+      recipe: {
+        label: this.input.value
+      }
+    }))
   }
   render() {
     return (
@@ -26,7 +33,7 @@ class App extends Component {
         />
       <button onClick={this.submitFood}>Submit</button>
         <pre>
-
+          Monday's Breakfast: {this.state.calendar && this.state.calendar.monday.breakfast}
         </pre>
       </div>
     )
