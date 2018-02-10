@@ -13,9 +13,22 @@ class App extends Component {
       })
     })
   }
+  submitFood = () => {
+    store.dispatch()
+  }
   render() {
     return (
-      'Hello World'
+      <div>
+        <input
+          type="text"
+          ref={(input) => this.input = input}
+          placeholder="Monday's Breakfast"
+        />
+      <button onClick={this.submitFood}>Submit</button>
+        <pre>
+
+        </pre>
+      </div>
     )
   }
 }
