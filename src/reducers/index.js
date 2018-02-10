@@ -40,3 +40,7 @@ const initialCalendarState = {
     dinner: null,
   },
 }
+
+function calendar (state = initialCalendarState, action) {
+  
+}
