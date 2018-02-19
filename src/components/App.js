@@ -2,9 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addRecipe, removeFromCalendar } from '../actions';
 import { capitalize } from '../utils/helpers';
+import ArrowRightIcon from 'react-icons/lib/fa/arrow-circle-right';
 import CalendarIcon from 'react-icons/lib/fa/calendar-plus-o';
+import Modal from 'react-modal';
+import Loading from 'react-loading';
+import { fetchRecipes } from '../utils/api';
+import FoodList from './FoodList';
 
 class App extends Component {
+  state = {
+    foodModalOpen: false,
+    meal: null,
+    day: null,
+    food: null,
+  }
   render() {
     const { calendar, remove } = this.props
     const mealOrder = ['breakfast', 'lunch', 'dinner']
@@ -29,7 +40,7 @@ class App extends Component {
           <div className='icon-grid'>
             {calendar.map(({ day, meals }) => (
               <ul key={day}>
-                {mealOrder.map(meal) => (
+                {mealOrder.map((meal) => (
                   <li key={meal} className='meal'>
                     {meals[meal]
                       ? <div className='food-item'>
@@ -41,7 +52,7 @@ class App extends Component {
                         </button>
                     }
                   </li>
-                )}
+                ))}
               </ul>
             ))}
           </div>
