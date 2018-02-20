@@ -70,10 +70,14 @@ class App extends Component {
       <div>
         <div className='nav'>
           <h3 className='header'>(don't forget the bacon)</h3>
-          <button className='shopping-list' onClick={this.openIngredientsModal}>
-            Grocery List
-          </button>
         </div>
+        <br/>
+        <button className='shopping-list' onClick={this.openIngredientsModal}>
+          Grocery List
+        </button>
+        <br/>
+        <br/>
+        <br/>
         <div className='container'>
 
 
@@ -88,7 +92,7 @@ class App extends Component {
           <div className='calendar'>
 
             <div className='days'>
-              {calendar.map(({ day }) => <h3 key={day} className='subheader'>{capitalize(day)}</h3>)}
+              {calendar.map(({ day }) => <h3 key={day} className='subheader'>{capitalize(day)}&nbsp;&nbsp;&nbsp;&nbsp;</h3>)}
             </div>
 
             <div className='icon-grid'>
