@@ -1,7 +1,7 @@
 import React from 'react';
 import { trim } from '../utils/helpers';
 
-export default function FoodList({ food, onSelect }) {
+export default function FoodList ({ food, onSelect }) {
   if (food.length === 0) {
     return <p>Your search returned 0 results.</p>
   }

@@ -16,6 +16,7 @@ class App extends Component {
     day: null,
     food: null,
     loadingFood: false,
+    ingredientsModalOpen: false,
   }
   openFoodModal = ({ meal, day }) => {
     this.setState(() => ({
@@ -79,7 +80,7 @@ class App extends Component {
                           <button onClick={() => remove({meal, day})}>Clear</button>
                         </div>
                       : <button onClick={() => this.openFoodModal({meal, day})} className='icon-btn'>
-                          <CalendarIcon size={40}/>
+                          <CalendarIcon size={30}/>
                         </button>
                     }
                   </li>
@@ -137,7 +138,7 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ food, calendar }) {
+function mapStateToProps ({ food, calendar }) {
   const dayOrder = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
 
   return {
@@ -154,7 +155,7 @@ function mapStateToProps({ food, calendar }) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     selectRecipe: (data) => dispatch(addRecipe(data)),
     remove: (data) => dispatch(removeFromCalendar(data)),

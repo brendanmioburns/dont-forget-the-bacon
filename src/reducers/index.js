@@ -77,9 +77,7 @@ function calendar (state = initialCalendarState, action) {
         }
       }
     default :
-      return {
-        state
-      }
+      return state
   }
 }
 
