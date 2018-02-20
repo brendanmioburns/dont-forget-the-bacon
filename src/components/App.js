@@ -47,6 +47,8 @@ class App extends Component {
         loadingFood: false,
       })))
   }
+  openIngredientsModal = () => this.setState(() => ({ ingredientsModalOpen: true }))
+  closeIngredientsModal = () => this.setState(() => ({ ingredientsModalOpen: false }))
   render() {
     const { foodModalOpen, loadingFood, food } = this.state
     const { calendar, remove, selectRecipe } = this.props
@@ -103,7 +105,7 @@ class App extends Component {
               ? <Loading delay={200} type='spin' color='#222' className='loading'/>
               : <div className='search-container'>
                   <h3 className='subheader'>
-                    Find a meal for {capitalize(this.state.day)} {this.state.meal}
+                    Find a meal for {this.state.meal} on {capitalize(this.state.day)}
                   </h3>
                   <div className='search'>
                     <input
