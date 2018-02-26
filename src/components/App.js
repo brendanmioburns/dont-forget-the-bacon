@@ -8,6 +8,8 @@ import Modal from 'react-modal';
 import Loading from 'react-loading';
 import { fetchRecipes } from '../utils/api';
 import FoodList from './FoodList';
+import ShoppingList from './ShoppingList';
+import cart from '../images/cartofgroceries.png';
 
 class App extends Component {
   state = {
@@ -73,18 +75,18 @@ class App extends Component {
         </div>
         <br/>
         <button className='shopping-list' onClick={this.openIngredientsModal}>
-          Grocery List
+          <img src={cart} style={{'zoom':'2.75%'}} alt="cart button"/>
         </button>
         <br/>
         <br/>
         <br/>
         <div className='container'>
-
-
+          <br/>
           <ul className='meal-types'>
+
             {mealOrder.map((mealType) => (
               <li key={mealType} className='subheader'>
-                {capitalize(mealType)}
+                &nbsp;&nbsp;{capitalize(mealType)}
               </li>
             ))}
           </ul>
@@ -92,7 +94,8 @@ class App extends Component {
           <div className='calendar'>
 
             <div className='days'>
-              {calendar.map(({ day }) => <h3 key={day} className='subheader'>{capitalize(day)}&nbsp;&nbsp;&nbsp;&nbsp;</h3>)}
+
+              {calendar.map(({ day }) => <h3 key={day} className='subheader'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{capitalize(day)}</h3>)}
             </div>
 
             <div className='icon-grid'>
@@ -102,7 +105,7 @@ class App extends Component {
                     <li key={meal} className='meal'>
                       {meals[meal]
                         ? <div className='food-item'>
-                            <img src={meals[meal].image} alt={meals[meal].label}/>
+                            <img src={meals[meal].image} alt={meals[meal].label} style={{"border":"2px solid black"}}/>
                             <button onClick={() => remove({meal, day})}>Clear</button>
                           </div>
                         : <button onClick={() => this.openFoodModal({meal, day})} className='icon-btn'>
@@ -160,7 +163,20 @@ class App extends Component {
             </div>
           </Modal>
 
+          <Modal
+            className='modal'
+            overlayClassName='overlay'
+            isOpen={ingredientsModalOpen}
+            onRequestClose={this.closeIngredientsModal}
+            contentLabel='Modal'
+          >
+            {ingredientsModalOpen && <ShoppingList list={this.generateShoppingList()}/>}
+          </Modal>
+
         </div>
+        <br/>
+        <br/>
+        <br/>
       </div>
     )
   }
